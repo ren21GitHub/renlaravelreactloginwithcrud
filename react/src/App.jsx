@@ -34,29 +34,30 @@ function App() {
 
 export default App */
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./views/Login"
-import Signup from "./views/Signup"
-import Users from "./views/Users"
-import NotFound from "./views/NotFound"
-import GuestLayout from "./components/GuestLayout"
-import DefaultLayout from "./components/DefaultLayout"
-import Dashboard from "./views/Dashboard"
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Login from "./views/Login"
+// import Signup from "./views/Signup"
+// import Users from "./views/Users"
+// import NotFound from "./views/NotFound"
+// import GuestLayout from "./components/GuestLayout"
+// import DefaultLayout from "./components/DefaultLayout"
+// import Dashboard from "./views/Dashboard"
 
 export default function App() {
   return (
-      <div>
-        <BrowserRouter>
-          <Routes>
-            <Route index element ={<DefaultLayout />} />
-            {/* <Route path="/" element={<GuestLayout />} /> */}
-            <Route path="/Dashboard" element ={<Dashboard />} />
-            <Route path="/Users" element ={<Users />} />
-            <Route path="/Login" element ={<Login />} />
-            <Route path="/Signup" element ={<Signup />} />
-            <Route path="*" element ={<NotFound/>} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+      // <div>
+      //   <BrowserRouter>
+      //     <Routes>
+      //       <Route index element ={<DefaultLayout />} />
+      //       {/* <Route path="/" element={<GuestLayout />} /> */}
+      //       <Route path="/Dashboard" element ={<Dashboard />} />
+      //       <Route path="/Users" element ={<Users />} />
+      //       <Route path="/Login" element ={<Login />} />
+      //       <Route path="/Signup" element ={<Signup />} />
+      //       <Route path="*" element ={<NotFound/>} />
+      //     </Routes>
+      //   </BrowserRouter>
+      // </div>
+
   )
 }
