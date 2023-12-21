@@ -12,7 +12,7 @@ class SignupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // return true;
+        return true;
     }
 
     /**
@@ -22,17 +22,17 @@ class SignupRequest extends FormRequest
      */
     public function rules(): array
     {
-        // return [
-        //     'name' => ['required', 'string'],
-        //     'email' => ['required', 'email', 'unique:users,email'],
-        //     'password' => [
-        //         'required',
-        //         'confirmed',
-        //         Password::min(8)
-        //             ->letters()
-        //             ->symbols()
-        //             ->numbers()
-        //     ]
-        // ];
+        return [
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => [
+                'required',
+                'confirmed',
+                Password::min(6)
+                    // ->letters()
+                    // ->symbols()
+                    // ->numbers()
+            ]
+        ];
     }
 }
