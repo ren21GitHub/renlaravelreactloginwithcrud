@@ -15,30 +15,30 @@ import {Link} from "react-router-dom";
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-//   const {setNotification} = useStateContext()
+  // const {setNotification} = useStateContext()
 
   useEffect(() => {
-//     getUsers();
+    getUsers();
   }, [])
 
-//   const onDeleteClick = user => {
-//     if (!window.confirm("Are you sure you want to delete this user?")) {
-//       return
-//     }
-//     axiosClient.delete(`/users/${user.id}`)
-//       .then(() => {
-//         setNotification('User was successfully deleted')
-//         getUsers()
-//       })
-//   }
+  const onDeleteClick = user => {
+    if (!window.confirm("Are you sure you want to delete this user?")) {
+      return
+    }
+    axiosClient.delete(`/users/${user.id}`)
+      .then(() => {
+        // setNotification('User was successfully deleted')
+        getUsers()
+      })
+  }
 
   const getUsers = () => {
     setLoading(true)
     axiosClient.get('/users')
       .then(({ data }) => {
         setLoading(false)
-//         setUsers(data.data)
-        console.log(data);
+        setUsers(data.data)
+        // console.log(data);
       })
       .catch(() => {
         setLoading(false)
@@ -65,7 +65,7 @@ export default function Users() {
                 {loading &&
                     <tbody>
                         <tr>
-                            <td colSpan="5" class="text-center">
+                            <td colSpan="5" className="text-center">
                                 Loading...
                             </td>
                         </tr>
