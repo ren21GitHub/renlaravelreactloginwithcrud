@@ -1,21 +1,28 @@
-// export default function Users() {
-
-//     return (
-//         <div>
-//             <h2>Users</h2>
-//         </div>
-//     )
-// }
-
 import {useEffect, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {Link} from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider.jsx";
+import { TablePagination } from '@mui/material';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const {setNotification} = useStateContext()
+
+  const rows = users;
+
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const handleChangePage = (event , newPage) => {
+    setPage(newPage);
+  }
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  }
+
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   useEffect(() => {
     getUsers();
@@ -38,7 +45,7 @@ export default function Users() {
       .then(({ data }) => {
         setLoading(false)
         setUsers(data.data)
-        // console.log(data);
+        console.log(data);
       })
       .catch(() => {
         setLoading(false)
@@ -72,8 +79,8 @@ export default function Users() {
                     </tbody>
                 }
                 {!loading &&
-                    <tbody>
-                    {users.map(u => (
+                    <tbody> 
+                    {users.slice(page*rowsPerPage, page*rowsPerPage+rowsPerPage).map(u => (
                         <tr key={u.id}>
                             <td>{u.id}</td>
                             <td>{u.name}</td>
@@ -89,6 +96,15 @@ export default function Users() {
                     </tbody>
                 }
             </table>
+            <TablePagination
+              component="div"
+              count={rows.length}
+              rowsPerPageOptions= {[5,25,50,rows.length]}
+              page={page}
+              onPageChange={handleChangePage}
+              rowsPerPage={rowsPerPage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
         </div>
     </div>
   )
