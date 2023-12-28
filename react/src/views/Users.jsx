@@ -21,8 +21,9 @@ export default function Users() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   }
-
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+// Avoid a layout jump when reaching the last page with empty rows.
+  // const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  // const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   useEffect(() => {
     getUsers();
@@ -80,7 +81,7 @@ export default function Users() {
                 }
                 {!loading &&
                     <tbody> 
-                    {users.slice(page*rowsPerPage, page*rowsPerPage+rowsPerPage).map(u => (
+                    {(rowsPerPage > 0 ? users.slice(page*rowsPerPage, page*rowsPerPage+rowsPerPage):users).map(u => (
                         <tr key={u.id}>
                             <td>{u.id}</td>
                             <td>{u.name}</td>
@@ -93,13 +94,18 @@ export default function Users() {
                             </td>
                         </tr>
                     ))}
+                    {/* {emptyRows > 0 && (
+                      <tr style={{ height: 34 * emptyRows }}>
+                        <td colSpan={3} aria-hidden />
+                      </tr>
+                    )} */}
                     </tbody>
                 }
             </table>
             <TablePagination
+              rowsPerPageOptions= {[5,10,25,50,/* rows.length */{ label: 'All', value: -1 }]}
               component="div"
               count={rows.length}
-              rowsPerPageOptions= {[5,25,50,rows.length]}
               page={page}
               onPageChange={handleChangePage}
               rowsPerPage={rowsPerPage}
