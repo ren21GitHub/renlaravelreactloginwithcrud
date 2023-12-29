@@ -54,14 +54,14 @@ export default function Users() {
   }
 
   return (
-    <div>
+    <div className="text-gray-600">
         <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
             <h1>Users</h1>
             <Link className="btn-add" to="/users/new">Add new</Link>
         </div>
-        <div className="card animated fadeInDown">
-            <table>
-                <thead>
+        <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-300">
+            <table className="w-full border-collapse border-spacing-0">
+                <thead className="font-semibold">
                     <tr>
                         <th>ID</th>
                         <th>Name</th>

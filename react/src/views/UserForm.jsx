@@ -66,14 +66,14 @@ export default function UserForm() {
     <>
       {user.id && <h1>Update User: {user.name}</h1>}
       {!user.id && <h1>New User</h1>}
-      <div className="card animated fadeInDown">
+      <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-300">
         {loading && (
           <div className="text-center">
             Loading...
           </div>
         )}
         {errors &&
-          <div className="alert">
+          <div className="p-4 bg-red-500 text-white rounded-md mb-4">
             {Object.keys(errors).map(key => (
               <p key={key}>{errors[key][0]}</p>
             ))}

@@ -68,7 +68,22 @@ button:focus-visible {
 }
  */
 
- @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+ /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap'); */
 
 * {
     box-sizing: border-box;
@@ -141,16 +156,16 @@ input:focus {
     background-color: #b72424;
 }
 
-.btn-logout {
+/* .btn-logout {
     text-decoration: none;
     padding: 0.75rem 1.5rem;
     color: #212121;
     transition: all 0.3s;
     border-radius: 6px;
-}
-.btn-logout:hover {
+} */
+/* .btn-logout:hover {
     background-color: rgba(0, 0, 0, 0.1);
-}
+} */
 
 .btn:hover,
 .btn:active,
@@ -158,15 +173,15 @@ input:focus {
     background: #5b08a7;
 }
 
-.text-center {
+/* .text-center {
     text-align: center;
-}
+} */
 
-table {
+/* table {
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
-}
+} */
 
 table > thead > tr > th {
     text-align: left;
@@ -180,24 +195,24 @@ table > tbody > tr > td {
     white-space: nowrap;
 }
 
-.card {
+/* .card {
     background-color: #FFF;
     border-radius: 0.5rem;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
     padding: 1.25rem 1.5rem;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
-}
+} */
 
-.alert {
+/* .alert {
     padding: 1rem;
     background-color: #ff4040;
     color: white;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
-}
+} */
 
-.notification {
+/* .notification {
     position: fixed;
     right: 1rem;
     bottom: 1rem;
@@ -206,7 +221,7 @@ table > tbody > tr > td {
     background-color: #00a762;
     color: white;
     border-radius: 0.5rem;
-}
+} */
 
 /* Login/Signup forms*/
 
@@ -248,34 +263,34 @@ table > tbody > tr > td {
 /* Login/Signup form */
 
 
-#defaultLayout {
+/* #defaultLayout {
     display: flex;
-}
+} */
 
-#defaultLayout aside {
+/* #defaultLayout aside {
     width: 240px;
     background-color: #5b08a7;
     padding: 1rem
-}
+} */
 
-#defaultLayout aside > a {
+/* #defaultLayout aside > a {
     display: block;
     padding: 0.75rem 1rem;
     border-radius: 6px;
     color: white;
     text-decoration: none;
     transition: all 0.2s;
-}
+} */
 
-#defaultLayout aside > a:hover {
+/* #defaultLayout aside > a:hover {
     background-color: rgba(0, 0, 0, 0.2);
-}
+} */
 
-#defaultLayout .content {
+/* #defaultLayout .content {
     flex: 1;
-}
+} */
 
-#defaultLayout header {
+/* #defaultLayout header {
     height: 80px;
     padding: 2rem 3rem;
     background-color: white;
@@ -283,13 +298,13 @@ table > tbody > tr > td {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
-#defaultLayout main {
+/* #defaultLayout main {
     padding: 2rem;
-}
+} */
 
-.animated {
+/* .animated {
     -webkit-animation-duration: 0.3s;
     animation-duration: 0.3s;
     -webkit-animation-fill-mode: both;
@@ -310,4 +325,5 @@ table > tbody > tr > td {
         opacity: 1;
         transform: translateY(0);
     }
-}
+} */
+
