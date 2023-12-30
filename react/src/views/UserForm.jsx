@@ -66,7 +66,7 @@ export default function UserForm() {
     <>
       {user.id && <h1>Update User: {user.name}</h1>}
       {!user.id && <h1>New User</h1>}
-      <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-300">
+      <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
         {loading && (
           <div className="text-center">
             Loading...

@@ -46,7 +46,7 @@ export default function Users() {
       .then(({ data }) => {
         setLoading(false)
         setUsers(data.data)
-        console.log(data);
+        // console.log(data);
       })
       .catch(() => {
         setLoading(false)
@@ -59,7 +59,7 @@ export default function Users() {
             <h1>Users</h1>
             <Link className="btn-add" to="/users/new">Add new</Link>
         </div>
-        <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-300">
+        <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
             <table className="w-full border-collapse border-spacing-0">
                 <thead className="font-semibold">
                     <tr>

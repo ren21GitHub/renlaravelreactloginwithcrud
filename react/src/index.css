@@ -304,9 +304,9 @@ table > tbody > tr > td {
     padding: 2rem;
 } */
 
-/* .animated {
-    -webkit-animation-duration: 0.3s;
-    animation-duration: 0.3s;
+.animated {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -325,5 +325,5 @@ table > tbody > tr > td {
         opacity: 1;
         transform: translateY(0);
     }
-} */
+}
 
