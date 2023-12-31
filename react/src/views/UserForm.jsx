@@ -85,7 +85,7 @@ export default function UserForm() {
             <input type="email" value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
             <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
             <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation"/>
-            <button className="btn">Save</button>
+            <button className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Save</button>
           </form>
         )}
       </div>

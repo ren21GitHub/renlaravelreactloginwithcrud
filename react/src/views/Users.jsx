@@ -57,7 +57,7 @@ export default function Users() {
     <div className="text-gray-600">
         <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
             <h1>Users</h1>
-            <Link className="btn-add" to="/users/new">Add new</Link>
+            <Link className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" to="/users/new">Add new</Link>
         </div>
         <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
             <table className="w-full border-collapse border-spacing-0">
@@ -65,9 +65,10 @@ export default function Users() {
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Create Date</th>
-                        <th>Actions</th>
+                        <th className="hidden sm:table-cell">Email</th>
+                        <th className="hidden md:table-cell">Create Date</th>
+                        <th className="hidden lg:table-cell">Sample</th>
+                        <th className="">Actions</th>
                     </tr>
                 </thead>
                 {loading &&
@@ -84,13 +85,33 @@ export default function Users() {
                     {(rowsPerPage > 0 ? users.slice(page*rowsPerPage, page*rowsPerPage+rowsPerPage):users).map(u => (
                         <tr key={u.id}>
                             <td>{u.id}</td>
-                            <td>{u.name}</td>
-                            <td>{u.email}</td>
-                            <td>{u.created_at}</td>
-                            <td>
-                                <Link className="btn-edit" to={'/users/' + u.id}>Edit</Link>
+                            <td>{u.name}
+                              <dl className="lg:hidden">
+                                <dt className="sr-only sm:hidden">Email</dt>
+                                <dd className="sm:hidden">{u.email}</dd>
+                                <dt className="sr-only md:hidden">Create Date</dt>
+                                <dd className="md:hidden">{u.created_at}</dd>
+                                <dt className="sr-only lg:hidden">Sample</dt>
+                                <dd className="lg:hidden">asdfsadfsda</dd>
+                              </dl>
+                            </td>
+                            <td className="hidden sm:table-cell">{u.email}</td>
+                            <td className="hidden md:table-cell">{u.created_at}</td>
+                            <td className="hidden lg:table-cell">asdfsadfsda</td>
+                            <td className="sm:hidden ">
+                              <dl>
+                                <dd className="my-4">
+                                  <Link className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
+                                </dd>
+                                <dd>
+                                  <button className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
+                                </dd>
+                              </dl>
+                            </td>
+                            <td className="hidden sm:table-cell">
+                                <Link className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
                                 &nbsp;
-                                <button className="btn-delete" onClick={ev => onDeleteClick(u)}>Delete</button>
+                                <button className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
                             </td>
                         </tr>
                     ))}

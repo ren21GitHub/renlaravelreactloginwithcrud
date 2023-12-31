@@ -121,7 +121,7 @@ input:focus {
     border-color: #5b08a7;
 }
 
-.btn,
+/* .btn,
 .btn-add,
 .btn-edit,
 .btn-delete {
@@ -154,7 +154,7 @@ input:focus {
 }
 .btn-delete {
     background-color: #b72424;
-}
+} */
 
 /* .btn-logout {
     text-decoration: none;
@@ -167,11 +167,11 @@ input:focus {
     background-color: rgba(0, 0, 0, 0.1);
 } */
 
-.btn:hover,
+/* .btn:hover,
 .btn:active,
 .btn:focus {
     background: #5b08a7;
-}
+} */
 
 /* .text-center {
     text-align: center;

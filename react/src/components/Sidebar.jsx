@@ -1,10 +1,36 @@
 import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react"
-import { createContext, useState, useContext } from "react"
+import { createContext, useState, useContext, useEffect } from "react"
 
 const SidebarContext = createContext()
 
 export default function Sidebar({children}){
     const [expanded, setExpanded] = useState(true)
+
+    useEffect(() => {
+        // Function to update setExpanded based on screen width
+        const handleResize = () => {
+            
+          const screenWidth = window.innerWidth;
+    
+          // Set the expanded value based on the screen width
+          if (screenWidth < 1024) {
+            setExpanded(false);
+          } else {
+            setExpanded(true);
+          }
+        };
+
+        // Initial call to set the initial state based on the screen width
+    handleResize();
+
+    // Event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+    },[]);
 
     return (
         <aside className="h-screen">

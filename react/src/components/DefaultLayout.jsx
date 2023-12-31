@@ -66,7 +66,7 @@ export default function DefaultLayout(){
 
                     <div>
                         {user.name} &nbsp; &nbsp;
-                        <a onClick={onLogout} className="no-underline px-4 py-2 text-gray-600 bg-transparent hover:bg-indigo-50 rounded-md" href="#">Logout</a>
+                        <a onClick={onLogout} className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" href="#">Logout</a>
                     </div>
                 </header>
                 <main className="p-8">
