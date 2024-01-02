@@ -70,7 +70,7 @@ export default function DefaultLayout(){
                     </div>
                 </header>
                 <main className="p-8">
-                    <Outlet/>
+                    <Outlet />
                 </main>
                 {notification &&
                     <div className="fixed right-4 bottom-4 z-50 p-4 bg-green-500 text-white rounded-md">

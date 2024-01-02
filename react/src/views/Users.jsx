@@ -56,19 +56,19 @@ export default function Users() {
   return (
     <div className="text-gray-600">
         <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
-            <h1>Users</h1>
+            <h6>Users</h6>
             <Link className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" to="/users/new">Add new</Link>
         </div>
         <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
-            <table className="w-full border-collapse border-spacing-0">
-                <thead className="font-semibold">
+            <table className="w-full border-collapse border-spacing-0 justify-between">
+                <thead>
                     <tr>
-                        <th>ID</th>
+                        <th className="font-semibold text-gray-700">ID</th>
                         <th>Name</th>
-                        <th className="hidden sm:table-cell">Email</th>
-                        <th className="hidden md:table-cell">Create Date</th>
-                        <th className="hidden lg:table-cell">Sample</th>
-                        <th className="">Actions</th>
+                        <th className="hidden sm:table-cell font-semibold text-gray-700">Email</th>
+                        <th className="hidden md:table-cell font-semibold text-gray-700">Create Date</th>
+                        <th className="hidden lg:table-cell font-semibold text-gray-700">Sample</th>
+                        <th className="font-semibold text-gray-700">Actions</th>
                     </tr>
                 </thead>
                 {loading &&
@@ -85,23 +85,23 @@ export default function Users() {
                     {(rowsPerPage > 0 ? users.slice(page*rowsPerPage, page*rowsPerPage+rowsPerPage):users).map(u => (
                         <tr key={u.id}>
                             <td>{u.id}</td>
-                            <td>{u.name}
+                            <td className="w-full sm:w-auto max-w-0 sm:max-w-none font-semibold text-gray-600">{u.name}
                               <dl className="lg:hidden">
                                 <dt className="sr-only sm:hidden">Email</dt>
-                                <dd className="sm:hidden">{u.email}</dd>
+                                <dd className="sm:hidden text-xs font-thin text-gray-500 truncate">{u.email}</dd>
                                 <dt className="sr-only md:hidden">Create Date</dt>
-                                <dd className="md:hidden">{u.created_at}</dd>
+                                <dd className="md:hidden text-xs font-thin text-gray-500 truncate">{u.created_at}</dd>
                                 <dt className="sr-only lg:hidden">Sample</dt>
-                                <dd className="lg:hidden">asdfsadfsda</dd>
+                                <dd className="lg:hidden text-xs font-thin text-gray-500 truncate">asdfadsfasdfdas</dd>
                               </dl>
                             </td>
                             <td className="hidden sm:table-cell">{u.email}</td>
                             <td className="hidden md:table-cell">{u.created_at}</td>
-                            <td className="hidden lg:table-cell">asdfsadfsda</td>
-                            <td className="sm:hidden ">
+                            <td className="hidden lg:table-cell">asdfadsfasdfdas</td>
+                            <td className="sm:hidden">
                               <dl>
                                 <dd className="my-4">
-                                  <Link className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
+                                  <Link className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text- px-5 py-2.5 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
                                 </dd>
                                 <dd>
                                   <button className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
@@ -124,7 +124,7 @@ export default function Users() {
                 }
             </table>
             <TablePagination
-              rowsPerPageOptions= {[5,10,25,50,/* rows.length */{ label: 'All', value: -1 }]}
+              rowsPerPageOptions= {[5,10,25,50,{ label: 'All', value: -1 }]}
               component="div"
               count={rows.length}
               page={page}

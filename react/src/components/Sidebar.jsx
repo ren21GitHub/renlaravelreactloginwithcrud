@@ -13,7 +13,7 @@ export default function Sidebar({children}){
           const screenWidth = window.innerWidth;
     
           // Set the expanded value based on the screen width
-          if (screenWidth < 1024) {
+          if (screenWidth < 1300) {
             setExpanded(false);
           } else {
             setExpanded(true);
@@ -79,7 +79,7 @@ export function SidebarItem({ icon, text, active, alert}){
         )}
         {!expanded && (
             <div className={`
-            absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}>
+            absolute z-[100] left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0`}>
                 {text}
                 </div>
         )}
