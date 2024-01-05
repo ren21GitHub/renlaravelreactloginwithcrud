@@ -1,10 +1,12 @@
 import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react"
 import { createContext, useState, useContext, useEffect } from "react"
+import { useStateContext } from "../contexts/ContextProvider"
 
 const SidebarContext = createContext()
 
 export default function Sidebar({children}){
     const [expanded, setExpanded] = useState(true)
+    const {user} = useStateContext()
 
     useEffect(() => {
         // Function to update setExpanded based on screen width
@@ -47,12 +49,12 @@ export default function Sidebar({children}){
                 </SidebarContext.Provider>
 
                 <div className="border-t flex p-3">
-                    <img src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true" alt="" className="w-10 h-10 rounded-md" />
+                    <img src={`https://api.dicebear.com/7.x/initials/svg?seed=${user.name}`} alt="" className="w-10 h-10 rounded-md" />
                 
                     <div className={`flex justify-between items-center overflow-hidden transition-all ${expanded ? "w-52 ml-3": "w-0"}`}>
                         <div className="leading-4">
-                            <h4 className="font-semibold">John Doe</h4>
-                            <span className="text-xs text-gray-600">johndoe@gmail.com</span>
+                            <h4 className="font-semibold">{user.name}</h4>
+                            <span className="text-xs text-gray-600">{user.email}</span>
                         </div>
                         <MoreVertical size={20}/>
                     </div>
