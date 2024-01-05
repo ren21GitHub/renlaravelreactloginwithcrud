@@ -56,19 +56,19 @@ export default function Users() {
   return (
     <div className="text-gray-600">
         <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
-            <h6>Users</h6>
-            <Link className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" to="/users/new">Add new</Link>
+            <div className="text-slate-700 font-bold text-xl">Users</div>
+            <Link className="text-slate-700 hover:text-white bg-green-500 hover:bg-green-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2" to="/users/new">Add new</Link>
         </div>
         <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
             <table className="w-full border-collapse border-spacing-0 justify-between">
                 <thead>
                     <tr>
-                        <th className="font-semibold text-gray-700">ID</th>
-                        <th>Name</th>
-                        <th className="hidden sm:table-cell font-semibold text-gray-700">Email</th>
-                        <th className="hidden md:table-cell font-semibold text-gray-700">Create Date</th>
-                        <th className="hidden lg:table-cell font-semibold text-gray-700">Sample</th>
-                        <th className="font-semibold text-gray-700">Actions</th>
+                        <th className="bg-slate-300 py-3 font-semibold text-gray-700">ID</th>
+                        <th className="bg-slate-300">Name</th>
+                        <th className="bg-slate-300 hidden sm:table-cell font-semibold text-gray-700">Email</th>
+                        <th className="bg-slate-300 hidden md:table-cell font-semibold text-gray-700">Create Date</th>
+                        {/* <th className="hidden lg:table-cell font-semibold text-gray-700">Sample</th> */}
+                        <th className="bg-slate-300 font-semibold text-gray-700">Actions</th>
                     </tr>
                 </thead>
                 {loading &&
@@ -92,26 +92,26 @@ export default function Users() {
                                 <dt className="sr-only md:hidden">Create Date</dt>
                                 <dd className="md:hidden text-xs font-thin text-gray-500 truncate">{u.created_at}</dd>
                                 <dt className="sr-only lg:hidden">Sample</dt>
-                                <dd className="lg:hidden text-xs font-thin text-gray-500 truncate">asdfadsfasdfdas</dd>
+                                {/* <dd className="lg:hidden text-xs font-thin text-gray-500 truncate">asdfadsfasdfdas</dd> */}
                               </dl>
                             </td>
                             <td className="hidden sm:table-cell">{u.email}</td>
                             <td className="hidden md:table-cell">{u.created_at}</td>
-                            <td className="hidden lg:table-cell">asdfadsfasdfdas</td>
+                            {/* <td className="hidden lg:table-cell">asdfadsfasdfdas</td> */}
                             <td className="sm:hidden">
                               <dl>
                                 <dd className="my-4">
-                                  <Link className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text- px-5 py-2.5 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
+                                  <Link className="text-slate-700 hover:text-white bg-sky-400/100 px-7 py-3 hover:bg-sky-500 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
                                 </dd>
                                 <dd>
-                                  <button className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
+                                  <button className="text-slate-700 hover:text-white bg-red-500 hover:bg-red-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
                                 </dd>
                               </dl>
                             </td>
                             <td className="hidden sm:table-cell">
-                                <Link className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
+                                <Link className="text-slate-700 hover:text-white bg-sky-400/100 hover:bg-sky-500 font-semibold rounded-sm text-sm px-5 py-3 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
                                 &nbsp;
-                                <button className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
+                                <button className="text-slate-700 hover:text-white bg-red-500 hover:bg-red-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
                             </td>
                         </tr>
                     ))}
