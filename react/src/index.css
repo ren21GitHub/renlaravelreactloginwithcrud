@@ -105,7 +105,7 @@ body {
     background-color: #f6f6f6;
 }
 
-input {
+/* input {
     outline: 0;
     background: #ffffff;
     width: 100%;
@@ -119,7 +119,7 @@ input {
 
 input:focus {
     border-color: #0ea5e9;
-}
+} */
 
 /* .btn,
 .btn-add,
@@ -225,7 +225,7 @@ table > tbody > tr > td {
 
 /* Login/Signup forms*/
 
-.login-signup-form {
+/* .login-signup-form {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -258,7 +258,7 @@ table > tbody > tr > td {
 .login-signup-form .form .message a {
     color: #0ea5e9;
     text-decoration: none;
-}
+} */
 
 /* Login/Signup form */
 

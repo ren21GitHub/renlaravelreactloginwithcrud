@@ -81,11 +81,12 @@ export default function UserForm() {
         }
         {!loading && (
           <form onSubmit={onSubmit}>
-            <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder="Name"/>
-            <input type="email" value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email"/>
-            <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password"/>
-            <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation"/>
-            <button className="text-slate-700 hover:text-white bg-sky-400/100 hover:bg-sky-500 font-semibold rounded-sm text-sm px-5 py-3 text-center me-2 mb-2">Save</button>
+            
+            <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder="Name" className="block w-full rounded-sm border-0 text-gray-900 shadow-sm ring-2 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6 my-4 p-3.5 hover:ring-sky-600"/>
+            <input type="email" value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email" className="block w-full rounded-sm border-0 text-gray-900 shadow-sm ring-2 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6 my-4 p-3.5 hover:ring-sky-600"/>
+            <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password" className="block w-full rounded-sm border-0 text-gray-900 shadow-sm ring-2 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6 my-4 p-3.5 hover:ring-sky-600"/>
+            <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation" className="block w-full rounded-sm border-0 text-gray-900 shadow-sm ring-2 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6 my-4 p-3.5 hover:ring-sky-600"/>
+            <button className="text-slate-700 hover:text-white bg-sky-400/100 hover:bg-sky-500 font-semibold rounded-sm text-sm px-5 py-3 text-center me-2 my-4">Save</button>
           </form>
         )}
       </div>
