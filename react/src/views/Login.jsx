@@ -69,8 +69,8 @@ export default function Login() {
 
           <input ref={emailRef} type="email" placeholder="Email"/>
           <input ref={passwordRef} type="password" placeholder="Password"/>
-          <button className="text-slate-700 hover:text-white bg-purple-500 hover:bg-purple-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2">Login</button>
-          <p className="message">Not registered? <Link to="/signup">Create an account</Link></p>
+          <button className="text-slate-700 hover:text-white bg-sky-500 hover:bg-sky-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2">Login</button>
+          <p className="message ">Not registered? <Link to="/signup">Create an account</Link></p>
         </form>
       </div>
     </div>

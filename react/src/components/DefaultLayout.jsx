@@ -1,7 +1,7 @@
 import { Link, Navigate, Outlet } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import axiosClient from "../axios-client";
-import { useEffect } from "react";
+import { useEffect} from "react";
 import Sidebar, { SidebarItem } from "./Sidebar"
 import {
   LifeBuoy,
@@ -43,14 +43,14 @@ export default function DefaultLayout(){
         <main className="flex">
             <Sidebar>
                 <Link to="/users">
-                    <SidebarItem icon = {<UserCircle size={20} />} text = "Users" active/>
+                    <SidebarItem icon = {<UserCircle size={20} />} text = "Users" to="/users" />
                 </Link>
                 <Link to="/dashboard">
-                    <SidebarItem icon = {<LayoutDashboard size={20} />} text = "DashBoard" alert/>
+                    <SidebarItem icon = {<LayoutDashboard size={20} />} text = "DashBoard" alert to="/dashboard" />
                 </Link>
-                <SidebarItem icon={<BarChart3 size={20} />} text="Statistics"/>
+                <SidebarItem icon={<BarChart3 size={20} />} text="Statistics" />
                 <SidebarItem icon={<Boxes size={20} />} text="Inventory" />
-                <SidebarItem icon={<Package size={20} />} text="Orders" alert/>
+                <SidebarItem icon={<Package size={20} />} text="Orders" alert />
                 <SidebarItem icon={<Receipt size={20} />} text="Billings" />
                 <hr className="my-3" />
                 <SidebarItem icon={<Settings size={20} />} text="Settings" />
@@ -65,7 +65,7 @@ export default function DefaultLayout(){
                     </div>
 
                     <div>
-                        {user.name} &nbsp; &nbsp;
+                    Hi,<a href="" className="text-md font-semibold text-sky-700"> {user.name} &nbsp; &nbsp;</a>
                         <a onClick={onLogout} className="text-slate-700 hover:text-white bg-white-500 hover:bg-gray-700 font-semibold rounded-sm text-sm px-5 py-3 text-center me-2 mb-2" href="#">Logout</a>
                     </div>
                 </header>

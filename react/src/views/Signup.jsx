@@ -51,7 +51,7 @@ export default function Signup() {
                     <input ref={emailRef} type="email" placeholder="Email Address"/>
                     <input ref={passwordRef} type="password" placeholder="Password"/>
                     <input ref={passwordConfirmationRef} type="password" placeholder="Repeat Password"/>
-                    <button className="text-slate-700 hover:text-white bg-purple-500 hover:bg-purple-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2">Signup</button>
+                    <button className="text-slate-700 hover:text-white bg-sky-500 hover:bg-sky-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2">Signup</button>
                     <p className="message">Already registered? <Link to="/login">Sign In</Link></p>
                 </form>
             </div>
