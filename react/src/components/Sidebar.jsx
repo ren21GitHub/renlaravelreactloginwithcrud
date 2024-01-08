@@ -39,7 +39,7 @@ export default function Sidebar({children}){
         <aside className="h-screen">
             <nav className={`h-full sm:w-min flex flex-col bg-white border-r shadow-sm`}>
                 <div className="p-4 pb-2 flex justify-between items-center">
-                    <img src="4.png" className={`overflow-hidden transition-all ${expanded ? "w-32": "w-0"}`} alt="" />
+                    <img src="3.png" className={`overflow-hidden transition-all ${expanded ? "w-32": "w-0"}`} alt="" />
                     <button onClick={() => setExpanded((curr) =>!curr)} className="p-1.5 rounded-sm bg-gray-50 hover:bg-gray-100">
                         {expanded? <ChevronFirst />: <ChevronLast />}
                     </button>
@@ -72,10 +72,10 @@ export function SidebarItem({ icon, text, to, alert}){
 
 
     return(
-        <li className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-sm cursor-pointer transition-colors group
+        <li className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-sm cursor-pointer transition-colors group 
         ${ isActive
             ? "bg-gradient-to-tr from-sky-200 to-sky-100 text-sky-800"
-            : "hover:bg-sky-50 text-gray-600"
+            : "hover:bg-sky-50 text-gray-600 hover:text-sky-800"
         }
         `}>
         {/* <Link to={to}> */}

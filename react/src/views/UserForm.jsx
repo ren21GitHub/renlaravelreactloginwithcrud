@@ -64,8 +64,8 @@ export default function UserForm() {
 
   return (
     <>
-      {user.id && <h1>Update User: {user.name}</h1>}
-      {!user.id && <h1>New User</h1>}
+      {user.id && <div className="text-slate-700 font-bold text-xl">Update User: {user.name}</div>}
+      {!user.id && <div className="text-slate-700 font-bold text-xl">New Users</div>}
       <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
         {loading && (
           <div className="text-center">

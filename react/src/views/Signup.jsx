@@ -36,9 +36,9 @@ export default function Signup() {
     }
 
     return (
-      <div className="flex min-h-full h-screen flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full h-screen flex-col justify-center px-6 py-12 lg:px-8 animated fadeInDown duration-400">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-      <a href="#"><img class="mx-auto h-10 w-auto" src="4.png" alt="Your Company"/></a>
+      <a href="#"><img class="mx-auto h-10 w-auto" src="3.png" alt="Your Company"/></a>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Signup for Free</h2>
       </div>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -72,12 +72,12 @@ export default function Signup() {
           </div>
 
           <div>
-            <button type="submit" className="flex w-full justify-center rounded-sm bg-sky-600 py-3.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 mb-15">Sign in</button>
+            <button type="submit" className="flex w-full justify-center rounded-sm bg-sky-600 py-3.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 mb-15">Sign up</button>
           </div>
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          Not registered?
+        Already registered?
           <Link to="/login" className="font-semibold leading-6 text-sky-600 hover:text-sky-500"> Sign In</Link>
         </p>
       </div>

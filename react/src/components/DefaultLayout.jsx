@@ -60,9 +60,9 @@ export default function DefaultLayout(){
 
             <div className="flex-1 text-gray-600">
                 <header className="h-20 p-8 bg-white shadow-md flex justify-between items-center">
-                    <div>
-                        Header
-                    </div>
+                <div className="text-slate-700 font-bold text-xl">
+                    Header...
+                </div>
 
                     <div>
                     Hi,<a href="" className="text-md font-semibold text-sky-700"> {user.name} &nbsp; &nbsp;</a>
