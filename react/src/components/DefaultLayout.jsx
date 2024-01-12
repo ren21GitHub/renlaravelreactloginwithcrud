@@ -40,7 +40,8 @@ export default function DefaultLayout(){
 
     return(
 
-        <main className="flex">
+        <main className="flex border-box">
+            <div className="flex">
             <Sidebar>
                 <Link to="/users">
                     <SidebarItem icon = {<UserCircle size={20} />} text = "Users" to="/users" />
@@ -57,23 +58,23 @@ export default function DefaultLayout(){
                 <SidebarItem icon={<LifeBuoy size={20} />} text="Statistics" />
                 
             </Sidebar>
-
+            </div>
             <div className="flex-1 text-gray-600">
                 <header className="h-20 p-8 bg-white shadow-md flex justify-between items-center">
                 <div className="text-slate-700 font-bold text-xl">
                     Header...
                 </div>
 
-                    <div>
+                <div>
                     Hi,<a href="" className="text-md font-semibold text-sky-700"> {user.name} &nbsp; &nbsp;</a>
                         <a onClick={onLogout} className="text-slate-700 hover:text-white bg-white-500 hover:bg-gray-700 font-semibold rounded-sm text-sm px-5 py-3 text-center me-2 mb-2" href="#">Logout</a>
-                    </div>
+                </div>
                 </header>
-                <main className="p-8">
+                <div className="pt-6 pl-6 mr-6">
                     <Outlet />
-                </main>
+                </div>
                 {notification &&
-                    <div className="fixed right-4 bottom-4 z-50 p-4 bg-green-500 text-white rounded-md">
+                    <div className="fixed right-4 bottom-4 z-50 p-5 bg-green-500 text-white rounded-sm">
                         {notification}
                     </div>
                 }

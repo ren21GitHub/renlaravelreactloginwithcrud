@@ -27,7 +27,7 @@ export default function Sidebar({children}){
     handleResize();
 
     // Event listener for window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize); 
 
     // Clean up the event listener on component unmount
     return () => {
@@ -37,7 +37,7 @@ export default function Sidebar({children}){
 
     return (
         <aside className="h-screen">
-            <nav className={`h-full sm:w-min flex flex-col bg-white border-r shadow-sm`}>
+            <nav className={`h-full sm:w-min flex flex-col bg-white border-r shadow-md`}>
                 <div className="p-4 pb-2 flex justify-between items-center">
                     <img src="3.png" className={`overflow-hidden transition-all ${expanded ? "w-32": "w-0"}`} alt="" />
                     <button onClick={() => setExpanded((curr) =>!curr)} className="p-1.5 rounded-sm bg-gray-50 hover:bg-gray-100">

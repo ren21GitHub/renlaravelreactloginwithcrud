@@ -17,7 +17,7 @@ const Users = () => {
 //   const rows = users;
 
   const [page, setPage] = useState(0);//
-  const [rowsPerPage, setRowsPerPage] = useState(5);//
+  const [rowsPerPage, setRowsPerPage] = useState(10);//
 
 //   const handleChangePage = (event) => {
 //     setPage(event.page);
@@ -65,8 +65,8 @@ const Users = () => {
   };
 
   return (
-    <div className="text-gray-600">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className="text-gray-600 w-full">
+      <div className=" flex justify-between items-center">
         <div className="text-slate-700 font-bold text-xl">Users</div>
         <Link
           className="text-slate-700 hover:text-white bg-green-500 hover:bg-green-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -75,18 +75,16 @@ const Users = () => {
           Add new
         </Link>
       </div>
-      <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
+      <div className="bg-white rounded-md shadow-md p-5  animated fadeInDown duration-400">
 
 
-      <div className="mb-3 w-full justify-start">
-          <InputText onInput={(e) => 
-            setFilters({
-              global: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS},
-            })
-          } placeholder="Keyword Search" className="bg-white border shadow-md px-3 py-3.5 "/>
-            </div>
-
-{/*  */}
+        <div className="mb-3 justify-start">
+            <InputText onInput={(e) => 
+              setFilters({
+                global: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS},
+              })
+            } placeholder="Keyword Search" className="border shadow-md px-3 py-3.5 "/>
+        </div>
         <DataTable 
           value={users} 
           sortMode="multiple" 
@@ -95,12 +93,19 @@ const Users = () => {
           rows={rowsPerPage} 
           page={page} 
           totalRecords={users.length} 
-          rowsPerPageOptions={[5, 10, 25, 50 , users.length]}
+          rowsPerPageOptions={[10, 25, 50 , users.length]} scrollable scrollHeight='610px' className='container w-auto xl:max-w-screen-2xl'/* className="max-w-screen-2xl xl:w-auto lg:w-auto md:w-auto sm:w-full" */
         >
           <Column field="id" header="ID" sortable />
           <Column field="name" header="Name" sortable/>
           <Column field="email" header="Email" sortable/>
           <Column field="created_at" header="Create Date" sortable/>
+          {/* <Column field="created_at" header="Create Date" sortable/>
+          <Column field="created_at" header="Create Date" sortable/>
+          <Column field="created_at" header="Create Date" sortable/>
+          <Column field="created_at" header="Create Date" sortable/>
+          <Column field="created_at" header="Create Date" sortable/>
+          <Column field="created_at" header="Create Date" sortable/>
+          <Column field="created_at" header="Create Date" sortable/> */}
           <Column
             header="Actions"
             body={(rowData) => (
