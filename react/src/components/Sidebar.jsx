@@ -72,7 +72,7 @@ export function SidebarItem({ icon, text, to, alert}){
 
 
     return(
-        <li className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-sm cursor-pointer transition-colors group 
+        <li className={`relative flex items-center py-3 px-3 my-1 font-medium rounded-sm cursor-pointer transition-colors group 
         ${ isActive
             ? "bg-gradient-to-tr from-sky-200 to-sky-100 text-sky-800"
             : "hover:bg-sky-50 text-gray-600 hover:text-sky-800"

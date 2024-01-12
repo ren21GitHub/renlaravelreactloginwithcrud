@@ -1,138 +1,123 @@
-import {useEffect, useState} from "react";
-import axiosClient from "../axios-client.js";
-import {Link} from "react-router-dom";
-import { useStateContext } from "../contexts/ContextProvider.jsx";
-import { TablePagination } from '@mui/material';
+import React, { useEffect, useState } from 'react';//
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { Link } from 'react-router-dom';//
+import "primereact/resources/themes/lara-light-blue/theme.css"
+import axiosClient from '../axios-client';//
+import { useStateContext } from '../contexts/ContextProvider';//
 
-export default function Users() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const {setNotification} = useStateContext()
+import { FilterMatchMode } from "primereact/api";
+import { InputText } from "primereact/inputtext";
 
-  const rows = users;
+const Users = () => {
+  const [users, setUsers] = useState([]);//
+  // const [loading, setLoading] = useState(false);//
+  const { setNotification } = useStateContext();//
 
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
-  const handleChangePage = (event , newPage) => {
-    setPage(newPage);
-  }
+//   const rows = users;
 
-  const handleChangeRowsPerPage = event => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  }
-// Avoid a layout jump when reaching the last page with empty rows.
-  // const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-  // const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const [page, setPage] = useState(0);//
+  const [rowsPerPage, setRowsPerPage] = useState(5);//
+
+//   const handleChangePage = (event) => {
+//     setPage(event.page);
+//   };
+
+//   const handleChangeRowsPerPage = (event) => {
+//     setRowsPerPage(event.rows);
+//     setPage(0);
+//   };
+
+  const [filters, setFilters] = useState({
+    global: {value: null, matchMode: FilterMatchMode.CONTAINS}, 
+  });
 
   useEffect(() => {
     getUsers();
-  }, [])
+  }, []);
 
-  const onDeleteClick = user => {
-    if (!window.confirm("Are you sure you want to delete this user?")) {
-      return
+  const onDeleteClick = (user) => {
+    if (!window.confirm('Are you sure you want to delete this user?')) {
+      return;
     }
-    axiosClient.delete(`/users/${user.id}`)
+    axiosClient
+      .delete(`/users/${user.id}`)
       .then(() => {
-        setNotification('User was successfully deleted')
-        getUsers()
+        setNotification('User was successfully deleted');
+        getUsers();
       })
-  }
+      .catch((error) => {
+        console.error('Error deleting user:', error);
+      });
+  };
 
   const getUsers = () => {
-    setLoading(true)
-    axiosClient.get('/users')
+    // setLoading(true);
+    axiosClient
+      .get('/users')
       .then(({ data }) => {
-        setLoading(false)
-        setUsers(data.data)
-        // console.log(data);
+        // setLoading(false);
+        setUsers(data.data);
       })
       .catch(() => {
-        setLoading(false)
-      })
-  }
+        // setLoading(false);
+      });
+  };
 
   return (
     <div className="text-gray-600">
-        <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
-            <div className="text-slate-700 font-bold text-xl">Users</div>
-            <Link className="text-slate-700 hover:text-white bg-green-500 hover:bg-green-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2" to="/users/new">Add new</Link>
-        </div>
-        <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
-            <table className="w-full border-collapse border-spacing-0 justify-between">
-                <thead>
-                    <tr>
-                        <th className="bg-slate-300 py-3 font-semibold text-gray-700">ID</th>
-                        <th className="bg-slate-300">Name</th>
-                        <th className="bg-slate-300 hidden sm:table-cell font-semibold text-gray-700">Email</th>
-                        <th className="bg-slate-300 hidden md:table-cell font-semibold text-gray-700">Create Date</th>
-                        {/* <th className="hidden lg:table-cell font-semibold text-gray-700">Sample</th> */}
-                        <th className="bg-slate-300 font-semibold text-gray-700">Actions</th>
-                    </tr>
-                </thead>
-                {loading &&
-                    <tbody>
-                        <tr>
-                            <td colSpan="5" className="text-center">
-                                Loading...
-                            </td>
-                        </tr>
-                    </tbody>
-                }
-                {!loading &&
-                    <tbody> 
-                    {(rowsPerPage > 0 ? users.slice(page*rowsPerPage, page*rowsPerPage+rowsPerPage):users).map(u => (
-                        <tr key={u.id}>
-                            <td>{u.id}</td>
-                            <td className="w-full sm:w-auto max-w-0 sm:max-w-none font-semibold text-gray-600">{u.name}
-                              <dl className="lg:hidden">
-                                <dt className="sr-only sm:hidden">Email</dt>
-                                <dd className="sm:hidden text-xs font-thin text-gray-500 truncate">{u.email}</dd>
-                                <dt className="sr-only md:hidden">Create Date</dt>
-                                <dd className="md:hidden text-xs font-thin text-gray-500 truncate">{u.created_at}</dd>
-                                <dt className="sr-only lg:hidden">Sample</dt>
-                                {/* <dd className="lg:hidden text-xs font-thin text-gray-500 truncate">asdfadsfasdfdas</dd> */}
-                              </dl>
-                            </td>
-                            <td className="hidden sm:table-cell">{u.email}</td>
-                            <td className="hidden md:table-cell">{u.created_at}</td>
-                            {/* <td className="hidden lg:table-cell">asdfadsfasdfdas</td> */}
-                            <td className="sm:hidden">
-                              <dl>
-                                <dd className="my-4">
-                                  <Link className="text-slate-700 hover:text-white bg-sky-400/100 px-7 py-3 hover:bg-sky-500 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
-                                </dd>
-                                <dd>
-                                  <button className="text-slate-700 hover:text-white bg-red-500 hover:bg-red-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
-                                </dd>
-                              </dl>
-                            </td>
-                            <td className="hidden sm:table-cell">
-                                <Link className="text-slate-700 hover:text-white bg-sky-400/100 hover:bg-sky-500 font-semibold rounded-sm text-sm px-5 py-3 text-center me-2 mb-2" to={'/users/' + u.id}>Edit</Link>
-                                &nbsp;
-                                <button className="text-slate-700 hover:text-white bg-red-500 hover:bg-red-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={ev => onDeleteClick(u)}>Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                    {/* {emptyRows > 0 && (
-                      <tr style={{ height: 34 * emptyRows }}>
-                        <td colSpan={3} aria-hidden />
-                      </tr>
-                    )} */}
-                    </tbody>
-                }
-            </table>
-            <TablePagination
-              rowsPerPageOptions= {[5,10,25,50,{ label: 'All', value: -1 }]}
-              component="div"
-              count={rows.length}
-              page={page}
-              onPageChange={handleChangePage}
-              rowsPerPage={rowsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="text-slate-700 font-bold text-xl">Users</div>
+        <Link
+          className="text-slate-700 hover:text-white bg-green-500 hover:bg-green-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center me-2 mb-2"
+          to="/users/new"
+        >
+          Add new
+        </Link>
+      </div>
+      <div className="bg-white rounded-md shadow-sm p-5 mb-4 mt-2 animated fadeInDown duration-400">
+
+
+      <div className="mb-3 w-full justify-start">
+          <InputText onInput={(e) => 
+            setFilters({
+              global: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS},
+            })
+          } placeholder="Keyword Search" className="bg-white border shadow-md px-3 py-3.5 "/>
+            </div>
+
+{/*  */}
+        <DataTable 
+          value={users} 
+          sortMode="multiple" 
+          filters={filters} 
+          paginator 
+          rows={rowsPerPage} 
+          page={page} 
+          totalRecords={users.length} 
+          rowsPerPageOptions={[5, 10, 25, 50 , users.length]}
+        >
+          <Column field="id" header="ID" sortable />
+          <Column field="name" header="Name" sortable/>
+          <Column field="email" header="Email" sortable/>
+          <Column field="created_at" header="Create Date" sortable/>
+          <Column
+            header="Actions"
+            body={(rowData) => (
+              <div>
+                <Link className="text-slate-700 hover:text-white bg-sky-400/100 hover:bg-sky-500 font-semibold rounded-sm text-sm px-5 py-3 text-center mr-2 mb-2" to={`/users/${rowData.id}`}>
+                  Edit
+                </Link>
+                <button className="text-slate-700 hover:text-white bg-red-500 hover:bg-red-700 font-semibold rounded-sm text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={() => onDeleteClick(rowData)}>
+                  Delete
+                </button>
+              </div>
+            )}
+          />
+        </DataTable>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default Users;
