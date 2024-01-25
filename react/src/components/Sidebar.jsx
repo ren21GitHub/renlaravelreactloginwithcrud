@@ -7,6 +7,7 @@ const SidebarContext = createContext()
 
 export default function Sidebar({children}){
     const [expanded, setExpanded] = useState(true)
+    const [chevicon, setChevicon] =useState(false)
     const {user} = useStateContext()
 
     useEffect(() => {
@@ -21,7 +22,14 @@ export default function Sidebar({children}){
           } else {
             setExpanded(true);
           }
+
+          if (screenWidth < 1700) {
+            setChevicon(true);
+          } else {
+            setChevicon(false);
+          }
         };
+
 
         // Initial call to set the initial state based on the screen width
     handleResize();
@@ -40,9 +48,11 @@ export default function Sidebar({children}){
             <nav className={`h-full sm:w-min flex flex-col bg-white border-r shadow-md`}>
                 <div className="p-4 pb-2 flex justify-between items-center">
                     <img src="3.png" className={`overflow-hidden transition-all ${expanded ? "w-32": "w-0"}`} alt="" />
-                    <button onClick={() => setExpanded((curr) =>!curr)} className="p-1.5 rounded-sm bg-gray-50 hover:bg-gray-100">
+                    {chevicon &&
+                        <button onClick={() => setExpanded((curr) =>!curr)} className="p-1.5 rounded-sm bg-gray-50 hover:bg-gray-100">
                         {expanded? <ChevronFirst />: <ChevronLast />}
                     </button>
+                    }
                 </div>
 
                 <SidebarContext.Provider value={{expanded}}>

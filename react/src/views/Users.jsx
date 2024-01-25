@@ -91,9 +91,12 @@ const Users = () => {
           filters={filters} 
           paginator 
           rows={rowsPerPage} 
-          page={page} 
-          totalRecords={users.length} 
-          rowsPerPageOptions={[10, 25, 50 , users.length]} scrollable scrollHeight='610px' className='container w-auto xl:max-w-screen-2xl'/* className="max-w-screen-2xl xl:w-auto lg:w-auto md:w-auto sm:w-full" */
+          // page={page} 
+          // totalRecords={users.length} 
+          rowsPerPageOptions={[10, 25, 50 , users.length]} 
+          scrollable 
+          scrollHeight='610px' 
+          className='container w-auto xl:max-w-screen-2xl'
         >
           <Column field="id" header="ID" sortable />
           <Column field="name" header="Name" sortable/>
